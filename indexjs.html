@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Witam</title>
+    <style>
+
+        #witam1,
+        #witam2,
+        #witam3,
+        #witam4{
+            display: none;
+        }
+    </style>
+</head>
+
+
+<body>
+<nav>
+    <ul>
+        <li><a href="#" onmouseover="showMenu('witam1')" onmouseout="hideMenu('witam1')">JD</a></li>
+        <li><a href="#" onmousemove="showMenu('witam2')" onmouseout="hideMenu('witam2')">Cześć!</a></li>
+        <li><a href="#" onmousemove="showMenu('witam3')" onmouseout="hideMenu('witam3')">Nie wiem</a></li>
+        <li><a href="#" onmousemove="showMenu('witam4')" onmouseout="hideMenu('witam4')">Witam4</a></li>
+    </ul>
+</nav>
+
+<div id="blok" onmouseover="zmien()">To coś podświetli się na zółto
+</div>
+<div id="witam1">
+   Siema, serdeczne JD
+
+</div>
+
+<div id="witam2">
+Sieeeema
+</div>
+
+<div id="witam3">
+Co mam robić?
+</div>
+
+<div id="witam4">
+    witam4 witam4 witam4witam4 witam4 witam4witam4 witam4 witam4witam4 witam4 witam4witam4 witam4 witam4witam4 witam4 witam4witam4 witam4 witam4
+
+</div>
+<script>
+    function zmien() {
+        var blok = document.getElementById("blok");
+        blok.style.color="green";
+    }
+    function showMenu(odnosnik) {
+        const handler = document.getElementById(odnosnik);
+        handler.style.display="block";
+        blok.style.color="yellow";
+    }
+
+        function hideMenu(odnosnik) {
+            const handler = document.getElementById(odnosnik);
+            blok.style.color="black";
+            handler.style.display="none";
+        }
+    const images = new Array();
+
+    images[0] = "chad1.jpg"
+    images[1] = "chad2.png"
+    images[2] = "chad3.jpeg"
+
+    for(let i=0; i<3; i++){
+        document.write("<img src='chady/" + images[i] + "'alt='chad' class='images'>");
+    }
+
+
+
+</script>
+
+</body>
+</html>

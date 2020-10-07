@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="csslekcja2137.css">
+
+</head>
+<body>
+<a id="jd2" href="htmllekcja2137.html"><i>Wróć</i></a>
+
+<label for="gfx">Karty Graficzne</label>
+<select id="gfx" onchange="componentSelected('gfx')">
+</select>
+
+<label for="mb">Płyty Główne</label>
+<select id="mb" onchange="componentSelected('mb')">
+</select>
+
+
+<div id="blok1"></div>
+<div id="blok2"></div>
+
+<button onclick="addParagraf('blok1')">Dodaj pragraf do bloku 1</button>
+<button onclick="addParagraf('blok2')">Dodaj pragraf do bloku 2</button>
+<button onclick="addImg('blok2', 'pepe.gif','To jest obrazek')">Dodaj obrazek</button>
+<button onclick="addImg('blok2', 'sadcat.jpg','To jest obrazek')">Dodaj obrazek</button>
+
+<div id="gfx"></div>
+<div id="mb"></div>
+<div id="ram"></div>
+
+
+<div id="selectedOption">
+    <div id="mbSelected"></div>
+    <div id="gfxSelected"></div>
+
+</div>
+
+<div id="cos"></div>
+
+<script src="script3.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="057a511d-93f6-4456-9d42-c349c0b748a6" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gx8Gvtz5FDz1Q2m5vH6MOHstsK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/zad" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/zad" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="057a511d-93f6-4456-9d42-c349c0b748a6" name="Default Changelist" comment="" />
+      <created>1599044791788</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1599044791788</updated>
+      <workItem from="1599044793064" duration="521000" />
+      <workItem from="1599047373470" duration="1480000" />
+      <workItem from="1599116634878" duration="4257000" />
+      <workItem from="1599458811584" duration="3937000" />
+      <workItem from="1599562131078" duration="5108000" />
+      <workItem from="1599646405385" duration="3897000" />
+      <workItem from="1599650542207" duration="1604000" />
+      <workItem from="1599652542837" duration="1174000" />
+      <workItem from="1599719916827" duration="3315000" />
+      <workItem from="1599724902592" duration="1915000" />
+      <workItem from="1600068117114" duration="599000" />
+      <workItem from="1600071248893" duration="1255000" />
+      <workItem from="1600166821889" duration="3423000" />
+      <workItem from="1600252317389" duration="5833000" />
+      <workItem from="1600671890567" duration="4078000" />
+      <workItem from="1600772599633" duration="4236000" />
+      <workItem from="1600855284382" duration="7430000" />
+      <workItem from="1600928655590" duration="7426000" />
+      <workItem from="1601273304829" duration="5298000" />
+      <workItem from="1601381117100" duration="587000" />
+      <workItem from="1601462938390" duration="1372000" />
+      <workItem from="1601464539241" duration="21000" />
+      <workItem from="1601464820121" duration="990000" />
+      <workItem from="1601465837748" duration="1444000" />
+      <workItem from="1601467902132" duration="94000" />
+      <workItem from="1601533945089" duration="4026000" />
+      <workItem from="1601878011230" duration="6770000" />
+      <workItem from="1601984677059" duration="15000" />
+      <workItem from="1601984833880" duration="119000" />
+      <workItem from="1602065217415" duration="1435000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="862" y="282" key="FileChooserDialogImpl" timestamp="1600772616771">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="862" y="282" key="FileChooserDialogImpl/0.0.1920.1044@0.0.1920.1044" timestamp="1600772616771" />
+    <state x="828" y="174" width="770" height="639" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1600859864517">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="828" y="174" width="770" height="639" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1044@0.0.1920.1044" timestamp="1600859864517" />
+    <state x="620" y="237" key="run.anything.popup" timestamp="1601539768606">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="620" y="237" key="run.anything.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1601539768606" />
+    <state x="877" y="253" width="672" height="678" key="search.everywhere.popup" timestamp="1601277945031">
+      <screen x="0" y="0" width="1920" height="1044" />
+    </state>
+    <state x="877" y="253" width="672" height="678" key="search.everywhere.popup/0.0.1920.1044@0.0.1920.1044" timestamp="1601277945031" />
+  </component>
+</project>

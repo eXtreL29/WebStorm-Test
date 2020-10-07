@@ -1,0 +1,95 @@
+body {
+    background-color: #4a177a;
+    text-decoration: none;
+}
+
+
+.logo{
+    width: 10%;
+    height: 10%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu{
+    position: relative;
+    top: 10px;
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-family: Ubuntu;
+    border: 2px solid orangered;
+    padding: 3px;
+    background: orangered;
+    color: black;
+}
+
+.hover_img a { position:relative; }
+.hover_img a span { position:absolute; display:none; z-index:99; }
+.hover_img a:hover span { display:block; }
+.hover_img{
+    text-decoration: none;
+}
+
+.jd2{
+    margin-top: 4px;
+    border: 2px solid white;
+    padding: 4px;
+}
+h1.xd {
+    color: white;
+
+}
+
+.bialy {
+    color: white;
+
+}
+
+.kotek{
+    width: 40%;
+    display: flex;
+
+}
+
+#ab{
+    position: absolute;
+    display: flex;
+    border: 1px solid limegreen;
+
+}
+
+#re{
+    position: relative;
+    display: flex;
+    left: 10px;
+    top: 29px;
+    border: 1px solid deepskyblue;
+}
+
+#fx{
+    left:18px;
+    top:18px;
+    width: 148px;
+    text-align: center;
+    position: fixed;
+    border: 1px solid white;
+    background: orangered;
+
+}
+#fx2{
+    left:18px;
+    top:39px;
+    position: fixed;
+    display: flex;
+    width: 150px;
+
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+td, th { border: 0.5px solid white; color: white}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="csslekcja2137.css">
+
+</head>
+<body>
+<a id="jd2" href="htmllekcja2137.html"><i>Wróć</i></a>
+<p id="jd">Focobeek</p>
+<div>
+    <form action="">
+        <table>
+            <tr>
+                <td class="login">Login</td>
+                <td><input type="text" id="login" placeholder="Login" pattern="[A-Z]{1}[a-z]{2,}"></td>
+            </tr>
+            <tr>
+                <td class="haslo">Hasło</td>
+                <td><input type="password" id="haslo" placeholder="Hasło" pattern="[A-Z]{1}[a-z]{2,}"></td>
+            </tr>
+        </table>
+    </form>
+</div><br><br>
+
+<div>
+    <form action="" name="myForm">
+        <table>
+            <tr>
+                <td class="login" >Imie</td>
+                <td><input type="text" id="imie" placeholder="Imie" pattern="[A-Z]{1}[a-z]{2,}" name="imie" onchange="addForm('imie','myImie')"></td>
+            </tr>
+            <tr>
+                <td class="haslo">Nazwisko</td>
+                <td><input type="text" id="nazwisko" placeholder="Nazwisko" pattern="[A-Z]{1}[a-z]{2,}"></td>
+            </tr>
+            <tr>
+                <td class="haslo">Kraj</td>
+                <td><input type="text" id="kraj" placeholder="Kraj" pattern="[A-Z]{1}[a-z]{2,}"></td>
+            </tr>
+            <tr>
+                <td class="haslo">Miejscowość</td>
+                <td><input type="text" id="miejscowosc" placeholder="Miejscowość" pattern="[A-Z]{1}[a-z]{2,}"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button id="wyslij">Wyślij</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="dane">
+    <div id="myImie"></div>
+    <div id="hasloForm"></div>
+    <div id="krajForm"></div>
+    <div id="miejscowoscForm"></div>
+</div>
+
+<script src="jslekcja2137.js"></script>
+</body>
+</html>

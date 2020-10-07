@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+    <title>Shakes & Fidget</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-itunes-app" content="app-id=556886960">
+    <meta name="apple-mobile-web-app-capableX" content="yes">
+    <meta name="description" content="The fun Shakes & Fidget browser game">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="res/css/playa-cookie-consent.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #gameContainer {
+            width: 100%;
+            height: 100%;
+        }
+
+        #gameContainer canvas {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            display:block;
+        }
+
+        div#webgl-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: #000;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        div#loadingBox {
+            width: 100%;
+            height: 0px;
+            position: absolute;
+            top: 50%;
+            margin-top: 137px;
+            text-align: center;
+        }
+
+        div#icon {
+            width: 1024px;
+            height: 256px;
+            position: relativ;
+            top: 50%;
+            left: 50%;
+            margin-left: 0px;
+            margin-top: 0px;
+            background-image: url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pcworld.pl%2Fnews%2FJak-korzystac-z-PornHub-Premium-za-darmo-w-Polsce%2C419584.html&psig=AOvVaw3KtcKJ0bonXA9s9Tf46Ism&ust=1600158583502000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLit0rGd6OsCFQAAAAAdAAAAABAD");
+            background-repeat: no-repeat;
+        }
+
+        div#box {
+            width: 1024px;
+            height: 256px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -512px;
+            margin-top: -138px;
+        }
+
+        div#bgBar {
+            display: none;
+            position: absolute;
+            width: 300px;
+            margin-left: -150px;
+            left: 50%;
+            height: 18px;
+            background-color: #15212E;
+        }
+
+        div#progressBar {
+            display: none;
+            left: 50%;
+            position: absolute;
+            margin-left: -150px;
+            margin-top: -15px;
+            width: 0px;
+            height: 48px;
+            background: #000 url("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pcworld.pl%2Fnews%2FJak-korzystac-z-PornHub-Premium-za-darmo-w-Polsce%2C419584.html&psig=AOvVaw3KtcKJ0bonXA9s9Tf46Ism&ust=1600158583502000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCLit0rGd6OsCFQAAAAAdAAAAABAD") no-repeat right top;
+        }
+
+        p#loadingInfo {
+            color: #fff;
+            letter-spacing: 1px;
+            position: absolute;
+            width: 100%;
+            font-family: sans-serif;
+            text-align: center;
+            top: 50%;
+            font-size: 11px;
+            font-weight: 500;
+            margin-top: 140px;
+            text-shadow: 0px 0px 5px #000;
+        }
+
+        div#spinner {
+            position: absolute;
+            height: 18px;
+            left: 50%;
+            margin-left: -150px;
+            width: 300px;
+            position: relative;
+            overflow: hidden;
+            background-color: #15212E;
+            box-shadow: 1px 1px 5px #111;
+        }
+
+        div#spinner:before {
+            display: block;
+            position: absolute;
+            content: "";
+            width: 150%;
+            margin-left: -10px;
+            height: 10px;
+            background-color: #0A84DD;
+            transform: rotate(-5deg);
+            animation: loading 1s linear infinite;
+        }
+
+        div#error {
+            color: #F00;
+        }
+
+        #footer {
+            padding: 5px;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #00;
+            color: #CCC;
+            text-align: center;
+        }
+
+        #footer a:link { color: #555; }
+        #footer a:visited { color: #555; }
+        #footer a:hover { color: #999; }
+        #footer a:active { color: #555; }
+
+        #overlay {
+            position: fixed;
+            display: none;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 2;
+            text-align: center;
+            color: #0A3B54;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #overlayc { width: 600px; height: 300px; position: absolute; left: 0; right: 0; top: 0; bottom: 0; margin:auto; }
+        #overlay input,textarea,button { color: #FFF; background-color: #0A3B54; font-size: 20px; padding:5px; border:none; margin:auto; }
+        #overlay button { color: #EFBF41; }
+
+        @keyframes loading {
+            from { top: -185% }
+            to { top: 225% }
+        }
+    </style>
+
+    <script>
+        var isIframe = false;
+        var flimmerkistePoll = 1;
+        var moshid = 'hash=c9db63b0d7e79fa1e84418993d6c1c96&time=1600071576';
+        var PlayaCookie = {}
+        var storage = {};
+        try {
+            if (window.location != window.parent.location) {
+                isIframe = true;
+            }
+        } catch(e){
+        }
+    </script>
+
+    <script crossorigin="anonymous" src="res/js/flimmerkiste_mosh.php?version=1"></script>
+    <script crossorigin="anonymous" src="res/js/thegame.js?version=9"></script>
+    <script crossorigin="anonymous" src="res/js/require.js"></script>
+    <script crossorigin="anonymous" src="https://cdn.playa-games.com/res/sfgame3/Build/56b27af957420c10aef972428bfcf1ed.js"></script>
+    <script crossorigin="anonymous" src="res/js/playa-cookie-consent.min.js?version=2"></script>
+    <script crossorigin="anonymous" src="res/js/playa-pixel-queue.min.js?version=3"></script>
+
+
+    <script>
+        (function() {
+            requirejs.config({
+                //To get timely, correct error triggers in IE, force a define/shim exports check.
+                paths: {
+                    PlayaLog: [
+                        'https://ls.playa-games.com/js/playalog.min'
+                    ],
+                    StorageClient: [
+                        'https://ls.playa-games.com/js/storage_client.min'
+                    ]
+                }
+            });
+
+            requirejs(
+                [
+                    "PlayaLog",
+                    "StorageClient"
+                ],
+                function (PlayaLog, StorageClient) {
+                    if (typeof StorageClient != 'function' ) {
+                        console.error('PLAYAWEBGL', 'StorageClient not initialized. AdBlocker active?');
+
+                        return;
+                    }
+
+                    storage = new StorageClient('https://ls.playa-games.com', 'ls');
+
+                    window.PlayaStorageInit = function() {
+                        console.log('PLAYWEBGL', 'PlayaStorageInit invoked');
+                        return storage.Init();
+                    };
+
+                    window.PlayaStorageClear = function() { return storage.Clear(); };
+                    window.PlayaStorageGet = function(key) {
+                        console.log('PLAYAWEBGL', 'PlayaStorageGet', key, storage.Get(key));
+                        return storage.Get(key);
+                    };
+
+                    window.PlayaStorageUnset = function(key) { return storage.Unset(key); };
+                    window.PlayaStorageSet = function(key, value) { return storage.Set(key, value); };
+
+
+                    var ls = document.getElementById('ls');
+
+                    if (ls === null) {
+                        ls = document.createElement('div');
+                        ls.setAttribute('id', 'ls');
+                        ls.style.display = 'none';
+                        ls = document.getElementsByTagName('body')[0].appendChild(ls);
+                    }
+
+                    if (ls === null) {
+                        console.error('PLAYAWEBGL', 'Cannot create communication layer for StorageClient');
+                        return;
+                    }
+
+                    ls.PlayaStorageInitCallback = function(e) {
+                        console.log('PLAYAWEBGL', 'PlayaStorageInitCallback invoked', e);
+
+                        if (game !== null) {
+                            game.SendMessage('JavaScriptCallbacks', 'OnLocalStorageInitialized');
+                        } else {
+                            console.error('PLAYAWEBGL', 'PlayaStorageInitCallback: game is null');
+                        }
+                    }
+
+                    ls.PlayaStorageDataCallback  = function(k,v) {
+                        console.log('PLAYAWEBGL', 'PlayaStorageDataCallback invoked', k, v);
+
+                        if (game === null) {
+                            console.error('PLAYAWEBGL', 'game is not initialized', k);
+
+                            return;
+                        }
+
+                        if (k && k == "sfgame_new/accounts") {
+                            console.log('PLAYAWEBGL', 'OnLocalStorageGet invoked', k, v);
+                            game.SendMessage('JavaScriptCallbacks', 'OnLocalStorageGet', JSON.stringify(v));
+                        }
+                    }
+                }
+            );
+
+            if (window.addEventListener) {
+                window.addEventListener("touchmove", function (e) { e.preventDefault (); }, false);
+                window.addEventListener("message", function(e) { storage.displayMessage(e)}, false);
+            } else {
+                window.attachEvent("ontouchmove", function (e) { e.preventDefault (); });
+                window.attachEvent("onmessage", function(e) { storage.displayMessage(e)});
+            }
+
+        })();
+    </script>
+
+    <script> // --- Unity Loader
+
+    var game = null;
+
+    try { window.indexedDB } catch (err) { ERROR = "'Indexed DB' is disabled in your browser! Please enable it to play the game!"; }
+
+    function unityProgress(gameInstance, progress) {
+        var container = document.getElementById('gameContainer');
+        if (container) document.body.style.background = container.style.background;
+
+        if (!gameInstance.Module) {
+            return;
+        } else if (progress == 1) {
+            document.getElementById("loadingInfo").innerHTML = "PROCESSING...";
+            document.getElementById("spinner").style.display = "inherit";
+            document.getElementById("bgBar").style.display = "none";
+            document.getElementById("progressBar").style.display = "none";
+        } else if (progress > 0) {
+            document.getElementById("progressBar").style.width = (300 * (progress * 0.6) + 15) + "px"
+            document.getElementById("loadingInfo").innerHTML = "";
+            document.getElementById("spinner").style.display = "none";
+            document.getElementById("bgBar").style.display = "block";
+            document.getElementById("progressBar").style.display = "inherit";
+        }
+    }
+
+    function unityComplete() {
+        document.getElementById("loadingBox").style.display = "none";
+        document.getElementById("icon").style.display = "none";
+        document.getElementById("loadingInfo").style.display = "none";
+        document.getElementById("box").style.display = "none";
+    }
+
+    function onPageLoad() {
+        document.getElementById('editableDiv').addEventListener('paste', handlePaste);
+        document.addEventListener('keydown', keyDown, true);
+
+        if (typeof ERROR !== 'undefined') {
+            document.getElementById("spinner").style.display = "none";
+            document.getElementById("loadingBox").innerHTML = '<div id="error">' + ERROR + '</div>';
+            document.getElementById("loadingBox").style.display = "block";
+        } else {
+            UnityLoader.Error.handler = function(e, t) { console.error('UNITY ERROR: ', e); };
+            game = UnityLoader.instantiate("gameContainer", "https://cdn.playa-games.com/res/sfgame3/Build/2cf1478e79f0392395caa2f778dba4a1.json", {
+                onProgress: unityProgress,
+                Module: {
+                    backgroundColor: "#000",
+                    onRuntimeInitialized: function() { unityComplete() }
+                }
+            });
+        }
+
+        //setTimeout(function() { document.getElementById("footer").style.display = 'block'; }, 10000);
+    };
+
+    function handlePaste(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        var clipboardData = e.clipboardData || window.clipboardData;
+        var pastedText = clipboardData.getData('Text');
+        if (game !== null) {
+            game.SendMessage('JavaScriptCallbacks', 'OnPaste', pastedText);
+        }
+    }
+
+    function keyDown(e) {
+        if (e.key === 'Control' && document.getElementById('copyarea') !== document.activeElement && document.getElementById('copyinput') !== document.activeElement) {
+            document.getElementById('editableDiv').focus();
+        }
+    }
+
+    function ovlHide() {
+        document.getElementById("overlay").style.display = 'none';
+        game.SendMessage('JavaScriptCallbacks', 'OnRefocus');
+    }
+
+    function ovlConfirm() {
+        if (game !== null) {
+            var text = document.getElementById('copyinput').value
+            var area = document.getElementById('copyarea');
+            if (area.style.display != 'none') {
+                text = area.value;
+            }
+            game.SendMessage('JavaScriptCallbacks', 'OnSetInputText', text);
+        }
+        ovlHide();
+    }
+    </script>
+</head>
+<body >
+
+<div id="webgl-content">
+    <div id="gameContainer"></div>
+</div>
+<div id="box">
+    <div id="icon"></div>
+</div>
+<div id="loadingBox">
+    <div id="spinner"></div>
+    <div id="bgBar"></div>
+    <div id="progressBar"></div>
+</div>
+<p id="loadingInfo"></p>
+
+<div id="overlay"><div id="overlayc">
+    <textarea id="copyarea" autocomplete="false" rows="10" cols="60"></textarea>
+    <input id="copyinput" autocomplete="false"></input><br>
+    <button type="button" id="copyok" onclick="ovlConfirm();">OK</button> <button type="button" id="copycancel" onclick="ovlHide()">CANCEL</button>
+</div></div>
+
+<div id="footer" style="display: none;"><a href="?platform=flash">Doesn't load? Click here to switch back to the old Flash version!</a></div>
+<div id="editableDiv" contenteditable="true" style="font-size:0px;">Paste</div>
+<script type="text/javascript">onPageLoad();</script>
+
+<script type="text/javascript">
+    window.playapixelqueue = new PlayaPixelQueue(1, 355, "", "");
+
+    window.playapixelqueue.addCallback(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'DC-8816948');
+        gtag('event', 'conversion', {
+            'allow_custom_scripts': true,
+            'send_to': 'DC-8816948/invmedia/i7wmkrjb+standard',
+            'anonymize_ip': true
+        });
+        window.playapixelqueue.logger("Google pixel called", {id: "DC-8816948"});
+    }, "https://www.googletagmanager.com/gtag/js?id=DC-8816948");
+
+    // Global site tag (gtag.js) - Google AdWords: 828067760
+    window.playapixelqueue.addCallback(function () {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-828067760');
+        gtag('event', 'page_view', {
+            'send_to': 'AW-828067760',
+            'user_id': '1',
+            'anonymize_ip': true
+        });
+        window.playapixelqueue.logger('Google pixel called', {id: 'AW-828067760'});
+    }, 'https://www.googletagmanager.com/gtag/js?id=AW-828067760');
+
+    var banner = new PlayaCookieConsent({
+        'autohide': 15000,
+        'onFadeout': function (status) {
+            if (status == 'unknown') {
+                this.onAllow();
+            }
+        },
+        'onReject': function () {
+        },
+        'onAllow': function () {
+            window.playapixelqueue.start();
+        }
+    });
+    // Google Code for Remarketing Tag -->
+    window.playapixelqueue.addCallback(function () {
+        var google_conversion_id = 1001760844;
+        var google_conversion_label = "FCk7CKSTyQMQzNDW3QM";
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+
+        window.playapixelqueue.logger("Google pixel called", {id: "1001760844"});
+    }, "https://www.googleadservices.com/pagead/conversion.js");
+    // Google Code for Remarketing Tag
+    window.playapixelqueue.addCallback(function () {
+        var google_conversion_id = 1007281284;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+
+        window.playapixelqueue.logger("Google pixel called", {id: "1007281284"});
+    }, "https://www.googleadservices.com/pagead/conversion.js");            // Google Code for Remarketing Tag
+    window.playapixelqueue.addCallback(function () {
+        var google_conversion_id = 926889450;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+
+        window.playapixelqueue.logger("Google pixel called", {id: "926889450"});
+    }, "https://www.googleadservices.com/pagead/conversion.js");    // Google Code für ein Remarketing-Tag
+    window.playapixelqueue.addCallback(function(){
+        var google_conversion_id = 1026250221;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+    }, "https://www.googleadservices.com/pagead/conversion.js");
+
+    window.playapixelqueue.addUrl(
+        window.playapixelqueue.getMapUrl('regstart', '', '', 'marketing'),
+        "regstart"
+    );
+
+</script>
+<!-- version: 4.100.200804.4, build date: 04.08.2020 16:08:36 -->
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+#PepoCheer{
+    background-image: url("../pepe.gif");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#PepeJAM{
+    background-image: url("../pepeJAM.gif");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#Pepe2{
+    background-image: url("../pepe2.gif");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#PepeSad{
+    background-image: url("../pepeSad.gif");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#PepeHack{
+    background-image: url("../pepeHack.gif");
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
